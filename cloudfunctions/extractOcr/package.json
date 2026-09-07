@@ -1,0 +1,11 @@
+{
+  "name": "lazyreader-extract-ocr",
+  "version": "0.1.0",
+  "private": true,
+  "main": "index.js",
+  "dependencies": {
+    "sharp": "^0.33.5",
+    "tencentcloud-sdk-nodejs-ocr": "^4.1.10",
+    "wx-server-sdk": "latest"
+  }
+}

@@ -1,0 +1,26 @@
+<view class="stamps-page">
+  <scroll-view scroll-y class="stamps-scroll" enhanced show-scrollbar="{{false}}">
+    <view class="stamps-header" style="padding-top: {{contentTop}}px">
+      <text class="page-kicker">FINISHED BOOKS · ARCHIVE</text>
+      <text class="page-title ink-highlight">书籍邮票</text>
+      <text class="page-subtitle">每当一本书被标记为“已读完”，这里就会留下日期与书名。</text>
+    </view>
+
+    <view wx:if="{{stamps.length}}" class="stamp-ledger">
+      <view class="ledger-meta"><text>ALL STAMPS</text><text>{{stamps.length}} 枚</text></view>
+      <view class="stamp-grid">
+        <view wx:for="{{stamps}}" wx:key="id" class="stamp-item" data-book-id="{{item.bookId}}" bindtap="openBook">
+          <stamp-canvas title="{{item.bookTitle}}" date="{{item.date}}" icon-id="{{item.resolvedIconId}}" />
+        </view>
+      </view>
+      <view class="ledger-page">— 1 —</view>
+    </view>
+    <view wx:else class="empty-stamps">
+      <image src="/assets/icons/stamp.svg" mode="aspectFit" />
+      <text>还没有获得书籍邮票</text>
+      <text>在阅读打卡中把一本书标记为“已读完”，邮票会自动生成。</text>
+      <button bindtap="openCheckin">去阅读打卡</button>
+    </view>
+    <view class="tab-spacer"></view>
+  </scroll-view>
+</view>

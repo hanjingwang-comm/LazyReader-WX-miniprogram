@@ -1,0 +1,46 @@
+.editor-page { min-height: 100vh; padding-bottom: calc(50rpx + env(safe-area-inset-bottom)); color: #1d211e; background: #eef0ed; }
+button::after { border: 0; }
+.editor-header { box-sizing: content-box; position: sticky; z-index: 20; top: 0; display: flex; gap: 8px; align-items: center; height: 56px; padding-right: 12px; padding-bottom: 8px; padding-left: 8px; background: rgba(249, 249, 246, .97); border-bottom: 1px solid #d4d7d2; }
+.editor-header button.back-button[size="mini"] { display: flex; align-items: center; justify-content: center; flex: 0 0 44px; width: 44px; height: 44px; margin: 0; padding: 0; background: transparent; border: 0; line-height: 1; }
+.back-button image { display: block; width: 28px; height: 28px; }
+.header-center { flex: 1; min-width: 0; }
+.header-center button.folder-link[size="mini"] { box-sizing: border-box; display: flex; align-items: center; gap: 4px; width: 100%; height: 32px; margin: 0; padding: 0; overflow: hidden; color: #374039; background: transparent; border: 0; border-radius: 0; font-size: 16px; font-weight: 600; line-height: 24px; text-align: left; }
+.folder-link text { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.folder-link image { display: block; flex: 0 0 18px; width: 18px; height: 18px; }
+.sync-label { display: block; color: #68736c; font-size: 12px; line-height: 18px; }
+.editor-header button.source-button[size="mini"] { box-sizing: border-box; flex: 0 0 44px; width: 44px; height: 44px; margin: 0; padding: 0; color: #315d96; background: #e7edf5; border: 1px solid #b7c7da; border-radius: 4px; font-family: "Courier New", monospace; font-size: 13px; font-weight: 700; line-height: 42px; }
+.editor-header button.header-icon[size="mini"] { display: flex; align-items: center; justify-content: center; flex: 0 0 44px; width: 44px; height: 44px; margin: 0; padding: 0; color: #315d96; background: transparent; border: 0; font-size: 28px; line-height: 1; }
+.editor-header button.header-icon.is-active[size="mini"] { background: #e3eaf4; border-radius: 4px; }
+.import-notice { padding: 15rpx 24rpx; color: #5c665f; background: #f2e7bb; font-size: 21rpx; text-align: center; }
+.paper-editor { min-height: 80vh; margin: 22rpx 18rpx 0; background: #fff; border: 2rpx solid #d1d5d0; box-shadow: 6rpx 8rpx 0 rgba(49, 95, 75, .1); }
+.editor-toolbar { position: sticky; z-index: 15; display: flex; gap: 4px; align-items: center; min-height: 44px; padding: 6px; overflow-x: auto; background: #fbfbf8; border-bottom: 1px solid #d8dbd6; white-space: nowrap; }
+.toolbar-picker { box-sizing: border-box; flex: 0 0 auto; min-width: 76px; height: 44px; padding: 0 10px; color: #48514b; background: #fff; border: 1px solid #dadcd8; border-radius: 4px; font-size: 14px; line-height: 42px; }
+.size-picker { min-width: 58px; }
+.toolbar-divider { flex: 0 0 auto; width: 2rpx; height: 36rpx; margin: 0 5rpx; background: #d7d9d5; }
+.editor-toolbar button.format-button[size="mini"] { box-sizing: border-box; display: flex; align-items: center; justify-content: center; flex: 0 0 44px; width: 44px; height: 44px; margin: 0; padding: 0; color: #3f4943; background: transparent; border: 0; border-radius: 4px; font-family: Georgia, serif; font-size: 18px; font-weight: 700; line-height: 1; }
+.format-button image { display: block; flex: 0 0 22px; width: 22px; height: 22px; }
+.editor-toolbar button.format-button.italic[size="mini"] { font-style: italic; font-weight: 400; }
+.editor-toolbar button.format-button.quote[size="mini"] { font-size: 24px; }
+.editor-toolbar button.format-button.is-active[size="mini"] { color: #214f85; background: #e1e9f4; }
+.toolbar-spacer { flex: 1 0 8rpx; }
+.editor-toolbar button.save-button[size="mini"] { display: flex; flex: 0 0 auto; gap: 6px; align-items: center; justify-content: center; height: 44px; margin: 0; padding: 0 12px; color: #fff; background: #315f4b; border: 0; border-radius: 4px; font-size: 14px; font-weight: 700; line-height: 1; }
+.save-button image { width: 29rpx; height: 29rpx; filter: brightness(0) invert(1); }
+.document-head { padding: 46rpx 42rpx 22rpx; }
+.title-input { height: auto; min-height: 78rpx; padding-bottom: 15rpx; color: #1b1f1c; border-bottom: 2rpx solid #d7d9d5; font-family: Georgia, "Songti SC", serif; font-size: 45rpx; font-weight: 700; line-height: 1.25; }
+.tag-row { display: flex; flex-wrap: wrap; gap: 9rpx; margin-top: 22rpx; }
+.document-tag { max-width: 190rpx; padding: 7rpx 13rpx; overflow: hidden; opacity: .48; border: 2rpx solid transparent; border-radius: 4rpx; font-size: 20rpx; text-overflow: ellipsis; white-space: nowrap; }
+.document-tag.is-selected { opacity: 1; border-color: rgba(31, 36, 32, .35); }
+.add-tag { display: flex; gap: 7rpx; align-items: center; width: auto; height: 42rpx; margin: 0; padding: 0 11rpx; color: #315d96; background: transparent; border: 2rpx solid #b9c4d1; border-radius: 4rpx; font-size: 20rpx; line-height: 38rpx; }
+.add-tag image { width: 25rpx; height: 25rpx; }
+.ocr-status { margin: 0 42rpx 22rpx; padding: 18rpx 20rpx; color: #405248; background: #edf2ee; border-left: 6rpx solid #4f8066; font-size: 22rpx; line-height: 1.5; }
+.ocr-status.is-error { color: #85372e; background: #f6ebe7; border-color: #a64d3e; }
+.article-editor { box-sizing: border-box; min-height: 720rpx; padding: 14rpx 42rpx 70rpx; color: #282e2a; font-family: Georgia, "Songti SC", serif; font-size: 32rpx; line-height: 1.85; }
+.ocr-actions { position: sticky; z-index: 12; bottom: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 14rpx; padding: 16rpx 20rpx calc(16rpx + env(safe-area-inset-bottom)); background: rgba(248, 248, 244, .97); border-top: 2rpx solid #d3d6d1; }
+.ocr-actions button { height: 72rpx; border-radius: 7rpx; font-size: 25rpx; font-weight: 700; line-height: 68rpx; }
+.secondary-action { color: #315f4b; background: #fff; border: 2rpx solid #315f4b; }
+.primary-action { color: #fff; background: #315f4b; border: 2rpx solid #315f4b; }
+.secondary-action[disabled] { opacity: .5; }
+.delete-entry { display: flex; gap: 8rpx; align-items: center; justify-content: center; width: auto; margin: 36rpx auto 0; padding: 14rpx 22rpx; color: #8a4b42; background: transparent; border: 0; font-size: 22rpx; }
+.delete-entry image { width: 28rpx; height: 28rpx; }
+.book-link-row { display: flex; flex-wrap: wrap; gap: 8rpx; margin-top: 18rpx; }
+.book-link { max-width: 100%; margin: 0; padding: 4rpx 10rpx; overflow: hidden; color: #315d96; background: #edf2f6; border-radius: 6rpx; font-size: 23rpx; line-height: 38rpx; text-overflow: ellipsis; white-space: nowrap; }

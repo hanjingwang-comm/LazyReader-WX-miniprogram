@@ -1,0 +1,76 @@
+<view class="editor-page">
+  <view class="editor-header" style="padding-top: {{contentTop}}px">
+    <button size="mini" class="back-button" bindtap="goBack" aria-label="返回资料库"><image src="/assets/icons/chevron-left.svg" mode="aspectFit" /></button>
+    <view class="header-center">
+      <button size="mini" class="folder-link" bindtap="chooseFolder" aria-label="选择目录"><text>{{folderName}}</text><image src="/assets/icons/chevron-down.svg" mode="aspectFit" /></button>
+      <text class="sync-label">{{syncLabel}}</text>
+    </view>
+    <button size="mini" wx:if="{{isPdf}}" class="source-button" bindtap="openPdf">PDF</button>
+    <button size="mini" class="header-icon {{favorite ? 'is-active' : ''}}" bindtap="toggleFavorite">☆</button>
+  </view>
+
+  <view wx:if="{{importedCount > 1}}" class="import-notice">已导入 {{importedCount}} 项，当前打开第一项，其余已进入资料库。</view>
+
+  <view class="paper-editor">
+    <view class="editor-toolbar" style="top: calc({{contentTop}}px + 65px)">
+      <button size="mini" class="format-button" bindtap="undo" aria-label="撤销"><image src="/assets/icons/undo-2.svg" mode="aspectFit" /></button>
+      <button size="mini" class="format-button" bindtap="redo" aria-label="重做"><image src="/assets/icons/redo-2.svg" mode="aspectFit" /></button>
+      <picker class="toolbar-picker" mode="selector" range="{{blockStyles}}" range-key="label" value="{{blockIndex}}" bindchange="onBlockChange">
+        <view>{{blockStyles[blockIndex].label}}⌄</view>
+      </picker>
+      <picker class="toolbar-picker size-picker" mode="selector" range="{{textSizes}}" range-key="label" value="{{sizeIndex}}" bindchange="onSizeChange">
+        <view>{{textSizes[sizeIndex].label}}⌄</view>
+      </picker>
+      <view class="toolbar-divider"></view>
+      <button size="mini" class="format-button {{formats.bold ? 'is-active' : ''}}" data-name="bold" bindtap="applyFormat">B</button>
+      <button size="mini" class="format-button italic {{formats.italic ? 'is-active' : ''}}" data-name="italic" bindtap="applyFormat">I</button>
+      <button size="mini" class="format-button {{formats.list ? 'is-active' : ''}}" data-name="list" data-value="unordered" bindtap="applyFormat">☷</button>
+      <button size="mini" class="format-button quote {{formats.blockquote ? 'is-active' : ''}}" data-name="blockquote" bindtap="applyFormat">“</button>
+      <button size="mini" class="format-button image-button" bindtap="insertImage">
+        <image src="/assets/icons/image.svg" mode="aspectFit" />
+      </button>
+      <view class="toolbar-spacer"></view>
+      <button size="mini" class="save-button" bindtap="manualSave">
+        <image src="/assets/icons/save.svg" mode="aspectFit" /><text>保存</text>
+      </button>
+    </view>
+
+    <view class="document-head">
+      <input class="title-input" value="{{title}}" bindinput="onTitleInput" placeholder="你在想什么？" maxlength="120" />
+      <view class="book-link-row"><button class="book-link" bindtap="chooseBook">{{bookTitle || '关联书籍'}}⌄</button><button wx:if="{{bookId}}" class="book-link" bindtap="openBook">书籍档案 ›</button></view>
+      <view class="tag-row">
+        <view
+          wx:for="{{tags}}"
+          wx:key="id"
+          class="document-tag {{item.selected ? 'is-selected' : ''}}"
+          style="background: {{item.background}}; color: {{item.foreground}}"
+          data-id="{{item.id}}"
+          bindtap="toggleTag"
+        >{{item.name}}</view>
+        <button class="add-tag" bindtap="createTag"><image src="/assets/icons/tag.svg" /> 添加标签</button>
+      </view>
+    </view>
+
+    <view wx:if="{{isOcr && ocrMessage}}" class="ocr-status {{ocrStatus === 'error' ? 'is-error' : ''}}">
+      <text>{{ocrMessage}}</text>
+    </view>
+
+    <editor
+      id="article-editor"
+      class="article-editor"
+      placeholder="从这里开始写作…"
+      show-img-size
+      show-img-toolbar
+      show-img-resize
+      bindinput="onEditorInput"
+      bindstatuschange="onStatusChange"
+    />
+
+    <view wx:if="{{isOcrDraft}}" class="ocr-actions safe-bottom">
+      <button class="secondary-action" disabled="{{ocrStatus === 'processing'}}" bindtap="extractText">提取划线文字</button>
+      <button class="primary-action" bindtap="confirmOcrDraft">保存修正</button>
+    </view>
+  </view>
+
+  <button class="delete-entry" bindtap="deleteArticle"><image src="/assets/icons/trash.svg" /> 删除这篇文章</button>
+</view>

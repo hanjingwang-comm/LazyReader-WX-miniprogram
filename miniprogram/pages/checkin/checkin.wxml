@@ -1,0 +1,87 @@
+<view class="checkin-page">
+  <scroll-view scroll-y class="checkin-scroll" enhanced show-scrollbar="{{false}}">
+    <view class="checkin-header" style="padding-top: {{contentTop}}px">
+      <view>
+        <text class="page-kicker">READING LEDGER</text>
+        <text class="page-title ink-highlight">阅读打卡</text>
+        <text class="page-subtitle">选择日期，记录每天的阅读进度</text>
+      </view>
+      <button size="mini" class="add-button" bindtap="openCreate" aria-label="记录阅读"><image src="/assets/icons/plus.svg" /></button>
+    </view>
+
+    <view class="bookshelf">
+      <view class="shelf-heading"><text>我的书籍 · {{books.length}}</text><button size="mini" bindtap="addBook" aria-label="添加书籍">＋</button></view>
+      <scroll-view wx:if="{{books.length}}" scroll-x class="shelf-scroll">
+        <button size="mini" wx:for="{{books}}" wx:key="id" class="shelf-book" data-id="{{item.id}}" bindtap="openBook"><image src="{{item.cover}}" mode="aspectFit" /><text>{{item.title}}</text></button>
+      </scroll-view>
+      <button wx:else class="shelf-empty" bindtap="addBook">添加第一本书</button>
+    </view>
+    <view class="calendar-sheet">
+      <view class="month-nav">
+        <text>{{monthTitle}}</text>
+        <view><button size="mini" data-delta="-1" bindtap="changeMonth">‹</button><button size="mini" data-delta="1" bindtap="changeMonth">›</button></view>
+      </view>
+      <view class="weekday-row"><text wx:for="{{weekdays}}" wx:key="*this">{{item}}</text></view>
+      <view class="calendar-grid">
+        <view
+          wx:for="{{calendar}}"
+          wx:key="key"
+          class="date-cell {{item.inMonth ? '' : 'is-outside'}} {{item.selected ? 'is-selected' : ''}} {{item.hasLog ? 'has-log' : ''}}"
+          data-date="{{item.key}}"
+          bindtap="selectDate"
+        >
+          <image wx:if="{{item.hasLog}}" class="calendar-sticker" src="{{item.stickerSrc}}" mode="aspectFill" />
+          <text>{{item.day}}</text>
+          <text wx:if="{{item.count > 1}}" class="log-count">{{item.count}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="stats-sheet">
+      <view><text>本月阅读</text><text class="stat-number">{{stats.monthDays}}</text><text>天</text></view>
+      <view><text>累计天数</text><text class="stat-number">{{stats.totalDays}}</text><text>天</text></view>
+      <view><text>今日阅读</text><text class="stat-number">{{stats.todayMinutes}}</text><text>分钟</text></view>
+      <view class="goal-stat" bindtap="editGoal"><text>完成目标</text><text class="stat-number">{{stats.goalProgress}}%</text><text>{{monthlyGoal}} 天目标 · 点击修改</text><view class="goal-line"><view style="width: {{stats.goalProgress > 100 ? 100 : stats.goalProgress}}%"></view></view></view>
+    </view>
+
+    <view class="daily-section">
+      <view class="daily-heading"><view><text>{{selectedDateLabel}}</text><text>{{selectedDate}}</text></view><button size="mini" bindtap="openCreate">＋</button></view>
+      <view wx:if="{{dateLogs.length}}" class="log-list">
+        <view wx:for="{{dateLogs}}" wx:key="id" class="log-row" data-id="{{item.id}}" bindtap="openEdit">
+          <image class="record-sticker" src="{{item.stickerSrc}}" mode="aspectFill" />
+          <view class="log-copy"><text>{{item.bookTitle}}</text><text>{{item.amountLabel}} · {{item.statusLabel}}</text></view>
+          <text class="edit-mark">编辑 ›</text>
+        </view>
+      </view>
+      <view wx:else class="empty-log"><text>这一天还没有阅读记录。</text><button bindtap="openCreate">记录一次阅读</button></view>
+    </view>
+    <view class="tab-spacer"></view>
+  </scroll-view>
+
+  <view wx:if="{{formOpen}}" class="sheet-scrim" style="padding-top: {{contentTop}}px" bindtap="closeForm">
+    <view class="log-form safe-bottom" catchtap="stopPropagation">
+      <view class="form-heading"><view><text>{{editingId ? '编辑阅读记录' : '新增阅读记录'}}</text><text>READING LOG</text></view><button size="mini" bindtap="closeForm" aria-label="关闭打卡">×</button></view>
+      <scroll-view scroll-y class="form-scroll" show-scrollbar="{{false}}">
+        <view class="form-fields">
+          <image wx:if="{{formBookId}}" class="form-cover" src="{{formCover}}" mode="aspectFit" />
+          <label><text>日期</text><picker mode="date" value="{{formDate}}" bindchange="onFormDate"><view class="field-value">{{formDate}}⌄</view></picker></label>
+          <label><text>书籍</text><picker wx:if="{{books.length}}" mode="selector" range="{{books}}" range-key="title" value="{{bookIndex}}" bindchange="onBookChoice"><view class="field-value">{{formBookTitle || '选择书籍'}}⌄</view></picker><button class="new-book" bindtap="addBook">＋ 添加书籍</button></label>
+          <view class="page-mode"><button class="{{pageMode === 'pages' ? 'active' : ''}}" data-mode="pages" bindtap="onPageMode">本次页数</button><button class="{{pageMode === 'position' ? 'active' : ''}}" data-mode="position" bindtap="onPageMode">读到第几页</button></view>
+          <view wx:if="{{pageMode === 'position'}}" class="field-pair">
+            <label><text>上次读到</text><input type="number" value="{{startPage}}" bindinput="onStartPage" maxlength="5" /></label>
+            <label><text>本次读到</text><input type="number" value="{{endPage}}" bindinput="onEndPage" placeholder="页码" maxlength="5" /></label>
+          </view>
+          <view class="field-pair">
+            <label wx:if="{{pageMode === 'pages'}}"><text>页数（选填）</text><input type="number" value="{{formPages}}" bindinput="onPages" placeholder="0" maxlength="4" /></label>
+            <label><text>时长（分钟，选填）</text><input type="number" value="{{formMinutes}}" bindinput="onMinutes" placeholder="0" maxlength="4" /></label>
+          </view>
+          <label><text>状态</text><picker mode="selector" range="{{statusOptions}}" range-key="label" value="{{formStatusIndex}}" bindchange="onStatus"><view class="field-value">{{statusOptions[formStatusIndex].label}}⌄</view></picker></label>
+        </view>
+      </scroll-view>
+      <view class="form-actions">
+        <button size="mini" wx:if="{{editingId}}" class="delete-button" bindtap="deleteLog">删除</button>
+        <button size="mini" class="save-log" bindtap="saveLog">{{editingId ? '保存修改' : '完成打卡'}}</button>
+      </view>
+    </view>
+  </view>
+</view>

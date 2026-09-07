@@ -1,0 +1,19 @@
+.stamps-page { height: 100vh; overflow: hidden; color: #202420; background: #f5f2e9; }
+button::after { border: 0; }
+.stamps-scroll { height: calc(100vh - 96px - env(safe-area-inset-bottom)); }
+.stamps-header { padding-right: 30rpx; padding-bottom: 34rpx; padding-left: 30rpx; background: rgba(251, 249, 241, .9); border-bottom: 2rpx solid #d8d2c2; }
+.page-kicker { display: block; color: #315d96; font-family: "Courier New", monospace; font-size: 19rpx; letter-spacing: 2rpx; }
+.page-title { display: block; width: fit-content; margin-top: 10rpx; font-family: Georgia, "Songti SC", serif; font-size: 56rpx; font-weight: 700; }
+.ink-highlight { background: linear-gradient(transparent 72%, rgba(224, 190, 67, .4) 72%); }
+.page-subtitle { display: block; max-width: 620rpx; margin-top: 10rpx; color: #6c746e; font-size: 23rpx; line-height: 1.55; }
+.stamp-ledger { margin: 24rpx 20rpx 0; padding: 26rpx 18rpx 30rpx; background: rgba(255, 254, 249, .82); border-top: 3rpx solid #b8b3a6; border-bottom: 3rpx solid #b8b3a6; }
+.ledger-meta { display: flex; justify-content: space-between; padding: 0 12rpx 18rpx; color: #666a65; border-bottom: 2rpx solid #d3d0c6; font-family: "Courier New", monospace; font-size: 19rpx; }
+.stamp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20rpx 12rpx; padding: 24rpx 4rpx; }
+.stamp-item { min-width: 0; background: transparent; }
+.ledger-page { padding-top: 8rpx; color: #888880; font-family: "Courier New", monospace; font-size: 18rpx; text-align: center; }
+.empty-stamps { display: flex; flex-direction: column; align-items: center; padding: 150rpx 60rpx; text-align: center; }
+.empty-stamps image { width: 90rpx; height: 90rpx; opacity: .7; }
+.empty-stamps text { display: block; margin-top: 24rpx; color: #323833; font-family: Georgia, "Songti SC", serif; font-size: 31rpx; font-weight: 700; }
+.empty-stamps text:nth-of-type(2) { max-width: 520rpx; margin-top: 12rpx; color: #747b76; font-family: inherit; font-size: 22rpx; font-weight: 400; line-height: 1.6; }
+.empty-stamps button { width: auto; margin-top: 28rpx; padding: 8rpx 22rpx; color: #315d96; background: transparent; border: 2rpx solid #315d96; border-radius: 6rpx; font-size: 23rpx; }
+.tab-spacer { height: 20rpx; }

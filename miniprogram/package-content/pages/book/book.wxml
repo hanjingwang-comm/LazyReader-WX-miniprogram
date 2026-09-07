@@ -1,0 +1,27 @@
+<view class="book-page">
+  <view class="book-nav" style="padding-top: {{contentTop}}px">
+    <button size="mini" bindtap="goBack" aria-label="返回">‹</button><text>{{bookId ? '书籍档案' : '添加书籍'}}</text>
+    <button size="mini" wx:if="{{bookId && !editing}}" bindtap="editBook">编辑</button>
+  </view>
+  <view wx:if="{{editing}}" class="book-form">
+    <label><text>书名</text><input value="{{title}}" bindinput="onTitle" placeholder="书的名字" maxlength="100" /></label>
+    <label><text>作者</text><input value="{{author}}" bindinput="onAuthor" placeholder="选填" maxlength="100" /></label>
+    <label><text>总页数</text><input value="{{totalPages}}" bindinput="onTotalPages" type="number" placeholder="选填" maxlength="5" /></label>
+    <text class="section-title">书籍剪贴图</text>
+    <view class="cover-grid">
+      <button size="mini" wx:for="{{stickers}}" wx:key="id" class="cover-option {{stickerId === item.id ? 'selected' : ''}}" bindtap="chooseSticker" data-id="{{item.id}}" aria-label="剪贴图 {{index + 1}}">
+        <image src="{{item.src}}" mode="aspectFit" /><text wx:if="{{stickerId === item.id}}">✓</text>
+      </button>
+    </view>
+    <view class="actions"><button bindtap="cancelEdit">取消</button><button class="primary" bindtap="saveBook">保存书籍</button></view>
+  </view>
+  <block wx:else>
+    <view class="book-heading"><image src="{{cover}}" mode="aspectFit" /><view><text class="book-title">{{title}}</text><text class="muted">{{author}}</text><text wx:if="{{totalPages}}" class="muted">{{totalPages}} 页</text></view></view>
+    <view class="book-stats"><text>{{stats.days}} 天阅读</text><text>{{stats.minutes}} 分钟</text><text>{{stats.pages}} 页累计</text></view>
+    <view wx:if="{{stats.currentPage}}" class="progress"><text>读到第 {{stats.currentPage}} 页{{totalPages ? ' · ' + stats.percent + '%' : ''}}</text><progress wx:if="{{totalPages}}" percent="{{stats.percent}}" activeColor="#315f4b" stroke-width="3" /></view>
+    <view wx:if="{{finishedDate}}" class="finished">已获得完成邮票 · {{finishedDate}}</view>
+    <view class="actions"><button class="primary" bindtap="checkin">记录阅读</button><button bindtap="addExcerpt">写摘录</button></view>
+    <view class="book-section"><text class="section-title">相关摘录 · {{articles.length}}</text><button wx:for="{{articles}}" wx:key="id" class="entry" data-id="{{item.id}}" bindtap="openArticle">{{item.title}} ›</button><text wx:if="{{!articles.length}}" class="muted">还没有关联的摘录</text></view>
+    <view class="book-section"><text class="section-title">阅读历程</text><view wx:for="{{logs}}" wx:key="id" class="history"><text>{{item.date}}</text><text>{{item.label}}</text></view><text wx:if="{{!logs.length}}" class="muted">还没有阅读记录</text></view>
+  </block>
+</view>

@@ -1,0 +1,36 @@
+{
+  "pages": [
+    "pages/library/library",
+    "pages/checkin/checkin",
+    "pages/stamps/stamps"
+  ],
+  "subpackages": [
+    {
+      "root": "package-content",
+      "pages": [
+        "pages/book/book",
+        "pages/editor/editor",
+        "pages/import/import"
+      ]
+    }
+  ],
+  "window": {
+    "navigationStyle": "custom",
+    "backgroundColor": "#f5f4ef",
+    "backgroundTextStyle": "dark"
+  },
+  "tabBar": {
+    "custom": true,
+    "color": "#6f756f",
+    "selectedColor": "#285997",
+    "backgroundColor": "#f8f7f2",
+    "list": [
+      { "pagePath": "pages/library/library", "text": "资料库" },
+      { "pagePath": "pages/checkin/checkin", "text": "阅读打卡" },
+      { "pagePath": "pages/stamps/stamps", "text": "书籍邮票" }
+    ]
+  },
+  "style": "v2",
+  "lazyCodeLoading": "requiredComponents",
+  "sitemapLocation": "sitemap.json"
+}

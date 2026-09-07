@@ -1,0 +1,123 @@
+<view class="page-shell">
+  <view class="app-header" style="padding-top: {{contentTop}}px">
+    <button size="mini" class="icon-button menu-button" bindtap="toggleDrawer" aria-label="打开目录"><image src="/assets/icons/menu.svg" mode="aspectFit" /></button>
+    <view class="search-box">
+      <image src="/assets/icons/search.svg" mode="aspectFit" />
+      <input value="{{query}}" bindinput="onSearch" placeholder="搜索标题、标签、全文" confirm-type="search" />
+      <text wx:if="{{query}}" class="clear-search" bindtap="clearSearch">×</text>
+    </view>
+    <button size="mini" class="icon-button create-button" bindtap="openCreate" aria-label="新建文档">
+      <image src="/assets/icons/plus.svg" mode="aspectFit" />
+    </button>
+  </view>
+
+  <scroll-view scroll-y class="library-scroll" enhanced show-scrollbar="{{false}}">
+    <view class="library-content">
+      <view class="title-row">
+        <view>
+          <text class="section-title ink-highlight">{{heading}}</text>
+          <text class="sync-label">{{syncLabel}}</text>
+        </view>
+        <button size="mini" class="text-button" bindtap="toggleDrawer">查看目录</button>
+      </view>
+
+      <view wx:if="{{allTags.length}}" class="tag-filter-row {{tagsExpanded ? 'is-expanded' : ''}}">
+        <view
+          wx:for="{{visibleTags}}"
+          wx:key="id"
+          class="filter-tag {{item.selected ? 'is-active' : ''}}"
+          style="background: {{item.background}}; color: {{item.foreground}}"
+          data-id="{{item.id}}"
+          bindtap="toggleTag"
+        >{{item.name}}</view>
+        <button size="mini" wx:if="{{hiddenTagCount || tagsExpanded}}" class="more-tags" bindtap="toggleTagsExpanded" aria-label="{{tagsExpanded ? '收起标签' : '展开全部标签'}}">
+          <image src="{{tagsExpanded ? '/assets/icons/chevron-up.svg' : '/assets/icons/ellipsis.svg'}}" mode="aspectFit" />
+        </button>
+      </view>
+
+      <view wx:if="{{articles.length}}" class="article-list">
+        <view
+          wx:for="{{articles}}"
+          wx:key="id"
+          class="article-row"
+          data-id="{{item.id}}"
+          bindtap="openArticle"
+          bindlongpress="showArticleMenu"
+        >
+          <view class="article-copy">
+            <view class="article-title-line">
+              <text class="article-title">{{item.title}}</text>
+              <text wx:if="{{item.favorite}}" class="favorite-mark">☆</text>
+            </view>
+            <text class="article-excerpt">{{item.excerpt}}</text>
+            <view class="article-meta">
+              <text
+                wx:for="{{item.displayTags}}"
+                wx:key="id"
+                wx:for-item="tag"
+                class="article-tag"
+                style="background: {{tag.background}}; color: {{tag.foreground}}"
+              >{{tag.name}}</text>
+              <text class="article-time">{{item.updatedLabel}}</text>
+            </view>
+          </view>
+          <button size="mini" class="row-menu" catchtap="showArticleMenu" data-id="{{item.id}}" aria-label="文章操作">•••</button>
+        </view>
+      </view>
+      <view wx:else class="empty-state">
+        <text class="empty-mark">R</text>
+        <text class="empty-title">{{emptyLabel}}</text>
+        <text>从右上角的加号开始记录。</text>
+      </view>
+    </view>
+    <view class="tab-spacer"></view>
+  </scroll-view>
+
+  <view wx:if="{{drawerOpen}}" class="drawer-scrim" bindtap="closeDrawer"></view>
+  <view class="folder-drawer {{drawerOpen ? 'is-open' : ''}}" style="padding-top: {{contentTop}}px">
+    <view class="drawer-brand">
+      <view class="brand-mark">R</view>
+      <view><text class="brand-name">LazyReader</text><text class="brand-subtitle">private reading archive</text></view>
+      <button size="mini" class="drawer-close" bindtap="closeDrawer" aria-label="关闭目录">×</button>
+    </view>
+    <scroll-view scroll-y class="drawer-scroll" show-scrollbar="{{false}}">
+      <view class="system-links">
+        <view class="drawer-link {{filter === 'archive' ? 'is-selected' : ''}}" data-filter="archive" bindtap="selectSystemFilter">
+          <image src="/assets/icons/archive.svg" /><text>档案袋</text><text class="count-badge">{{archiveCount}}</text>
+        </view>
+        <view class="drawer-link {{filter === 'favorite' ? 'is-selected' : ''}}" data-filter="favorite" bindtap="selectSystemFilter">
+          <image src="/assets/icons/star.svg" /><text>收藏</text><text class="count-badge">{{favoriteCount}}</text>
+        </view>
+      </view>
+      <view class="folder-heading"><text>目录</text><button bindtap="createRootFolder">＋</button></view>
+      <view class="folder-tree">
+        <block wx:for="{{folders}}" wx:key="id" wx:for-item="root">
+          <view class="folder-row {{root.selected ? 'is-selected' : ''}}" data-id="{{root.id}}" bindtap="selectFolder" bindlongpress="showFolderMenu">
+            <text class="collapse-mark">{{root.collapsed ? '›' : '⌄'}}</text>
+            <image src="/assets/icons/folder.svg" /><text class="folder-name">{{root.name}}</text>
+            <text class="count-badge">{{root.count}}</text>
+            <button size="mini" catchtap="showFolderMenu" data-id="{{root.id}}" aria-label="目录操作">•••</button>
+          </view>
+          <view wx:if="{{root.isLeaf && !root.collapsed}}" class="folder-article-list">
+            <view wx:for="{{root.articles}}" wx:key="id" wx:for-item="article" class="folder-article" data-id="{{article.id}}" bindtap="openArticle">
+              <text>·</text><text>{{article.title}}</text>
+            </view>
+          </view>
+          <block wx:for="{{root.children}}" wx:key="id" wx:for-item="child">
+            <view class="folder-row child {{child.selected ? 'is-selected' : ''}}" data-id="{{child.id}}" bindtap="selectFolder" bindlongpress="showFolderMenu">
+              <text class="collapse-mark">{{child.collapsed ? '›' : '⌄'}}</text>
+              <image src="/assets/icons/folder.svg" /><text class="folder-name">{{child.name}}</text>
+              <text class="count-badge">{{child.count}}</text>
+              <button size="mini" catchtap="showFolderMenu" data-id="{{child.id}}" aria-label="目录操作">•••</button>
+            </view>
+            <view wx:if="{{!child.collapsed}}" class="folder-article-list child-list">
+              <view wx:for="{{child.articles}}" wx:key="id" wx:for-item="article" class="folder-article" data-id="{{article.id}}" bindtap="openArticle">
+                <text>·</text><text>{{article.title}}</text>
+              </view>
+            </view>
+          </block>
+        </block>
+      </view>
+    </scroll-view>
+  </view>
+</view>

@@ -1,0 +1,6 @@
+{
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "stamp-canvas": "/components/stamp-canvas/index"
+  }
+}

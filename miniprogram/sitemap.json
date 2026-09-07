@@ -1,0 +1,4 @@
+{
+  "desc": "LazyReader is a private personal library; pages are not indexed.",
+  "rules": [{ "action": "disallow", "page": "*" }]
+}

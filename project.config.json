@@ -1,0 +1,18 @@
+{
+  "appid": "touristappid",
+  "projectname": "LayReader (WX-miniprogram)",
+  "compileType": "miniprogram",
+  "libVersion": "3.17.1",
+  "miniprogramRoot": "miniprogram/",
+  "cloudfunctionRoot": "cloudfunctions/",
+  "setting": {
+    "es6": true,
+    "enhance": true,
+    "postcss": true,
+    "minified": true,
+    "urlCheck": true,
+    "useCompilerPlugins": ["typescript"]
+  },
+  "simulatorType": "wechat",
+  "condition": {}
+}

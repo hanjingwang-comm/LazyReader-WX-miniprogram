@@ -1,0 +1,30 @@
+.book-page { min-height: 100vh; box-sizing: border-box; padding: 0 30rpx calc(40rpx + env(safe-area-inset-bottom)); color: #252d28; background: #fafbf8; }
+button::after { border: 0; }
+.book-nav { display: flex; align-items: center; gap: 18rpx; min-height: 88rpx; border-bottom: 1rpx solid #dce1da; }
+.book-nav > text { flex: 1; min-width: 0; white-space: nowrap; font-size: 28rpx; }
+.book-nav button { flex: 0 0 auto; width: 88rpx; height: 68rpx; margin: 0; padding: 0; line-height: 68rpx; font-size: 28rpx; color: #315d96; background: transparent; }
+.book-heading { display: flex; gap: 24rpx; align-items: center; padding: 32rpx 0; }
+.book-heading image { flex: 0 0 140rpx; width: 140rpx; height: 176rpx; }
+.book-heading > view { flex: 1; min-width: 0; }
+.book-title { display: block; font-size: 36rpx; font-family: Georgia, 'Songti SC', serif; font-weight: 700; overflow-wrap: anywhere; }
+.muted { display: block; font-size: 24rpx; color: #737b76; margin-top: 12rpx; }
+.book-stats { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12rpx; padding: 20rpx 0; border-top: 1rpx solid #dce1da; border-bottom: 1rpx solid #dce1da; font-size: 24rpx; }
+.progress { margin-top: 20rpx; font-size: 25rpx; }
+.progress progress { margin-top: 14rpx; }
+.finished { margin-top: 20rpx; color: #315d96; font-family: monospace; font-size: 24rpx; }
+.actions { display: flex; gap: 16rpx; margin: 30rpx 0; }
+.actions button { flex: 1; margin: 0; color: #315f4b; background: #edf2ee; border-radius: 8rpx; font-size: 27rpx; }
+.actions .primary { color: #fff; background: #315f4b; }
+.book-section { margin-top: 36rpx; }
+.section-title { display: block; padding-bottom: 16rpx; font-family: Georgia, 'Songti SC', serif; font-size: 30rpx; font-weight: 700; }
+.entry { padding: 22rpx 0; text-align: left; background: transparent; color: #315d96; font-size: 26rpx; line-height: 1.6; border-bottom: 1rpx solid #dce1da; border-radius: 0; overflow-wrap: anywhere; }
+.history { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12rpx; padding: 20rpx 0; border-bottom: 1rpx solid #dce1da; font-size: 24rpx; }
+.book-form { padding-top: 26rpx; }
+.book-form label { display: block; margin-bottom: 24rpx; }
+.book-form label text { display: block; margin-bottom: 10rpx; font-size: 24rpx; color: #626b65; }
+.book-form input { padding: 16rpx; height: 52rpx; border: 1rpx solid #d2dbd5; border-radius: 8rpx; background: #fff; font-size: 28rpx; }
+.cover-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12rpx; }
+.cover-option { position: relative; width: 100%; height: 188rpx; margin: 0; padding: 4rpx; background: transparent; border: 3rpx solid transparent; border-radius: 8rpx; }
+.cover-option image { display: block; width: 100%; height: 100%; }
+.cover-option.selected { border-color: #315d96; }
+.cover-option > text { position: absolute; bottom: 5rpx; right: 5rpx; font-size: 24rpx; line-height: 30rpx; color: #315d96; background: #fff; }
