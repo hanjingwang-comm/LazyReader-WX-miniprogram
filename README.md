@@ -6,6 +6,29 @@
 
 [English](#english) · [中文](#中文) · [Development / 开发](#development--开发)
 
+## In the App / 界面预览
+
+<table>
+  <tr>
+    <th width="33%">Library<br>资料库</th>
+    <th width="33%">Reading Check-ins<br>阅读打卡</th>
+    <th width="33%">Book Stamps<br>书籍邮票</th>
+  </tr>
+  <tr>
+    <td><a href="docs/images/library.jpg"><img src="docs/images/library.jpg" width="280" alt="Library: searchable articles and colored tags / 资料库：文章列表与彩色标签"></a></td>
+    <td><a href="docs/images/checkins.jpg"><img src="docs/images/checkins.jpg" width="280" alt="Reading check-ins: book clippings, calendar and reading statistics / 阅读打卡：书籍剪贴图、日历与阅读统计"></a></td>
+    <td><a href="docs/images/stamps.jpg"><img src="docs/images/stamps.jpg" width="280" alt="Book stamps with illustrations, titles and completion dates / 书籍邮票：插图、书名与完成日期"></a></td>
+  </tr>
+  <tr>
+    <td>Keep ideas within reach.<br>整理摘录，让思考有迹可循。</td>
+    <td>Give each reading day a place.<br>用剪贴日历，留下阅读足迹。</td>
+    <td>Turn finished books into keepsakes.<br>读完一本，收藏一枚邮票。</td>
+  </tr>
+</table>
+
+Actual simulator screenshots with fictional demo data. Select an image to view it full-size.<br>
+真实模拟器截图，使用虚构示例数据。点击图片可查看原图。
+
 ## English
 
 ### Product Positioning
