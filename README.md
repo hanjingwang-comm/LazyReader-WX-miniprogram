@@ -26,8 +26,8 @@
   </tr>
 </table>
 
-Actual simulator screenshots with fictional demo data. Select an image to view it full-size.<br>
-真实模拟器截图，使用虚构示例数据。点击图片可查看原图。
+Actual simulator screenshots with sample reading records, not personal reading history. Select an image to view it full-size.<br>
+真实模拟器截图，使用演示阅读记录，并非个人阅读历史。点击图片可查看原图。
 
 ## English
 
