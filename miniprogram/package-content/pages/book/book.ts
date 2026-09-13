@@ -70,7 +70,7 @@ Page({
   addExcerpt() {
     const state = repository.getState();
     const folder = state.folders.find((item) => item.id === "reading") || state.folders[0];
-    if (!folder) return wx.showToast({ title: "请先在资料库创建目录", icon: "none" });
+    if (!folder) return wx.showToast({ title: "请先在书袋创建目录", icon: "none" });
     const article = repository.createArticle({ title: "未命名摘录", folderId: folder.id, bookId: this.data.bookId });
     wx.navigateTo({ url: `/package-content/pages/editor/editor?id=${encodeURIComponent(article.id)}` });
   }

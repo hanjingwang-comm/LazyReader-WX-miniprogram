@@ -44,6 +44,31 @@ function harness() {
     restoreSave: () => { failSave = false; }, navigatedBack: () => navigatedBack };
 }
 
+test("fresh demo notes preserve the supplied titles and previews in every content format", async () => {
+  const h = harness();
+  await h.repository.initialize();
+  const articles = h.repository.getState().articles;
+  assert.deepEqual(articles.map((article) => article.title), ["为什么它永无止境？", "逃走的伸子", "《罗杰疑案》"]);
+  for (const article of articles) {
+    assert.equal(article.excerpt, article.contentText);
+    assert.equal(article.contentHtml, `<p>${article.contentText}</p>`);
+    assert.equal(article.contentDelta.ops[0].insert, article.contentText);
+  }
+  assert.ok(articles[0].contentText.includes("面对“愤怒”不同的反应和抉择"));
+  assert.ok(articles[1].contentText.includes("更不“理会我灵魂的出口”"));
+  assert.ok(articles[2].contentText.startsWith("谁能想到竟然会在侦探小说里"));
+});
+
+test("page names agree between the app manifest, navigation and main headings", () => {
+  const app = JSON.parse(fs.readFileSync("miniprogram/app.json", "utf8"));
+  assert.deepEqual(app.tabBar.list.map((tab) => tab.text), ["书袋", "墨迹", "墨盒"]);
+  const tabs = fs.readFileSync("miniprogram/custom-tab-bar/index.ts", "utf8");
+  for (const tab of app.tabBar.list) assert.ok(tabs.includes(`text: "${tab.text}"`));
+  assert.match(fs.readFileSync("miniprogram/pages/library/library.ts", "utf8"), /heading: "书袋"/);
+  assert.match(fs.readFileSync("miniprogram/pages/checkin/checkin.wxml", "utf8"), /class="page-title ink-highlight">墨迹<\/text>/);
+  assert.match(fs.readFileSync("miniprogram/pages/stamps/stamps.wxml", "utf8"), /class="page-title ink-highlight">墨盒<\/text>/);
+});
+
 test("book rename and cover update keep article associations and completion icons", async () => {
   const h = harness();
   const r = h.repository;

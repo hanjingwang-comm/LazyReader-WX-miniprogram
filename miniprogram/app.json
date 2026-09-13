@@ -25,9 +25,9 @@
     "selectedColor": "#285997",
     "backgroundColor": "#f8f7f2",
     "list": [
-      { "pagePath": "pages/library/library", "text": "资料库" },
-      { "pagePath": "pages/checkin/checkin", "text": "阅读打卡" },
-      { "pagePath": "pages/stamps/stamps", "text": "书籍邮票" }
+      { "pagePath": "pages/library/library", "text": "书袋" },
+      { "pagePath": "pages/checkin/checkin", "text": "墨迹" },
+      { "pagePath": "pages/stamps/stamps", "text": "墨盒" }
     ]
   },
   "style": "v2",

@@ -3,7 +3,7 @@
     <view class="checkin-header" style="padding-top: {{contentTop}}px">
       <view>
         <text class="page-kicker">READING LEDGER</text>
-        <text class="page-title ink-highlight">阅读打卡</text>
+        <text class="page-title ink-highlight">墨迹</text>
         <text class="page-subtitle">选择日期，记录每天的阅读进度</text>
       </view>
       <button size="mini" class="add-button" bindtap="openCreate" aria-label="记录阅读"><image src="/assets/icons/plus.svg" /></button>

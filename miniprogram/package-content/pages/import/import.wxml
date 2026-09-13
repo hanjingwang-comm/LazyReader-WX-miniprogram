@@ -49,7 +49,7 @@
         <view><text>{{item.name}}</text><text>{{item.type === 'image' ? '图片 · 将提取文字' : 'PDF'}} · {{item.sizeLabel}}</text></view>
         <button size="mini" data-index="{{index}}" bindtap="removePending">×</button>
       </view>
-      <button class="primary-action" disabled="{{importing}}" bindtap="importFiles">{{importing ? '正在导入…' : '导入到资料库'}}</button>
+      <button class="primary-action" disabled="{{importing}}" bindtap="importFiles">{{importing ? '正在导入…' : '导入到书袋'}}</button>
     </view>
     <view wx:else class="pending-empty">尚未选择文件</view>
   </view>

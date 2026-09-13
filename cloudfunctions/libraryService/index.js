@@ -71,19 +71,24 @@ function seedDocuments(openid, now) {
   ].map((tag) => ({ ...tag, createdAt: now, updatedAt: now }));
   const samples = [
     {
-      id: `${prefix}-sample-reading`, folderId: folderIds.reading, title: "阅读系统与长期知识积累",
+      id: `${prefix}-sample-reading`, folderId: folderIds.reading, title: "为什么它永无止境？",
       tagIds: [tagIds.reading, tagIds.archive], favorite: true,
       paragraphs: [
-        "真正有用的阅读工具，不只是把材料保存下来，而是帮助读者在需要的时候重新找到它、理解它，并继续写下自己的判断。",
-        "目录负责建立稳定的位置，标签负责建立跨目录的联系，而编辑器让摘录最终变成属于自己的文字。"
+        "很难得在网文小说中看到这样质量上乘的作品。我一直在思考书中每个人面对“愤怒”不同的反应和抉择..."
       ]
     },
     {
-      id: `${prefix}-sample-method`, folderId: folderIds.methods, title: "如何整理一份研究备忘",
+      id: `${prefix}-sample-method`, folderId: folderIds.methods, title: "逃走的伸子",
       tagIds: [tagIds.method, tagIds.writing], favorite: false,
       paragraphs: [
-        "先保留原始材料的上下文，再写下观察、疑问和可验证的解释。不要急着把所有摘录压缩成一个结论。",
-        "一份好的研究备忘能够说明证据来自哪里，也能清楚标记仍然没有解决的问题。"
+        "你不会读我写的文字，不关心我在意的事情，更不“理会我灵魂的出口”。弟弟好不容易来一趟，丈夫熟视无睹地干活让人感到不自在..."
+      ]
+    },
+    {
+      id: `${prefix}-sample-writing`, folderId: folderIds.writing, title: "《罗杰疑案》",
+      tagIds: [tagIds.writing], favorite: false,
+      paragraphs: [
+        "谁能想到竟然会在侦探小说里看到上世纪的英国人打麻将..."
       ]
     }
   ];

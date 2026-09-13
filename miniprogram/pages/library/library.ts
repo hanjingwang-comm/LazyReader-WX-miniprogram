@@ -38,7 +38,7 @@ Page({
     contentTop: 72,
     drawerOpen: false,
     filter: "archive",
-    heading: "档案袋",
+    heading: "书袋",
     query: "",
     selectedTagIds: [] as string[],
     tagsExpanded: false,
@@ -125,9 +125,9 @@ Page({
     }));
     this._tagLimit = visibleTagCount(allTags.map((tag) => tag.name), this._tagAvailableWidth);
     const visibleCount = this.data.tagsExpanded ? allTags.length : this._tagLimit;
-    const heading = this.data.filter === "archive" ? "档案袋"
+    const heading = this.data.filter === "archive" ? "书袋"
       : this.data.filter === "favorite" ? "收藏"
-        : state.folders.find((folder) => `folder:${folder.id}` === this.data.filter)?.name || "档案袋";
+        : state.folders.find((folder) => `folder:${folder.id}` === this.data.filter)?.name || "书袋";
     const syncLabel = state.syncStatus === "synced" ? "已同步"
       : state.syncStatus === "syncing" ? "同步中"
         : state.syncStatus === "pending" ? "本地已保存，等待同步" : "本地保存";
@@ -238,7 +238,7 @@ Page({
   },
 
   async confirmDeleteArticle(articleId: string, title: string) {
-    const result = await wx.showModal({ title: "删除文章", content: `“${title}”将从资料库中删除。`, confirmColor: "#a43f32" });
+    const result = await wx.showModal({ title: "删除文章", content: `“${title}”将从书袋中删除。`, confirmColor: "#a43f32" });
     if (result.confirm) await repository.deleteArticle(articleId);
   },
 

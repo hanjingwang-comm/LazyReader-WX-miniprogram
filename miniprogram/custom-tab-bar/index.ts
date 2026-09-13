@@ -1,7 +1,7 @@
 const items = [
-  { pagePath: "/pages/library/library", text: "资料库", icon: "/assets/icons/archive.svg" },
-  { pagePath: "/pages/checkin/checkin", text: "阅读打卡", icon: "/assets/icons/calendar-days.svg" },
-  { pagePath: "/pages/stamps/stamps", text: "书籍邮票", icon: "/assets/icons/stamp.svg" }
+  { pagePath: "/pages/library/library", text: "书袋", icon: "/assets/icons/archive.svg" },
+  { pagePath: "/pages/checkin/checkin", text: "墨迹", icon: "/assets/icons/calendar-days.svg" },
+  { pagePath: "/pages/stamps/stamps", text: "墨盒", icon: "/assets/icons/stamp.svg" }
 ];
 
 Component({

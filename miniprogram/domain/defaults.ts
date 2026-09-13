@@ -29,33 +29,31 @@ export function createDefaultState(now = Date.now()): RepositoryState {
     {
       id: "sample-reading-system",
       folderId: "reading",
-      title: "阅读系统与长期知识积累",
+      title: "为什么它永无止境？",
       tagIds: ["tag-reading", "tag-archive"],
       favorite: true,
       paragraphs: [
-        "真正有用的阅读工具，不只是把材料保存下来，而是帮助读者在需要的时候重新找到它、理解它，并继续写下自己的判断。",
-        "目录负责建立稳定的位置，标签负责建立跨目录的联系，而编辑器让摘录最终变成属于自己的文字。"
+        "很难得在网文小说中看到这样质量上乘的作品。我一直在思考书中每个人面对“愤怒”不同的反应和抉择..."
       ]
     },
     {
       id: "sample-method-note",
       folderId: "methods",
-      title: "如何整理一份研究备忘",
+      title: "逃走的伸子",
       tagIds: ["tag-method", "tag-writing"],
       favorite: false,
       paragraphs: [
-        "先保留原始材料的上下文，再写下观察、疑问和可验证的解释。不要急着把所有摘录压缩成一个结论。",
-        "一份好的研究备忘能够说明证据来自哪里，也能清楚标记仍然没有解决的问题。"
+        "你不会读我写的文字，不关心我在意的事情，更不“理会我灵魂的出口”。弟弟好不容易来一趟，丈夫熟视无睹地干活让人感到不自在..."
       ]
     },
     {
       id: "sample-writing-draft",
       folderId: "writing",
-      title: "把摘录变成自己的表达",
+      title: "《罗杰疑案》",
       tagIds: ["tag-writing", "tag-draft"],
       favorite: false,
       paragraphs: [
-        "摘录只是入口。重新排序、补充背景、写出反例，再把它放进自己的论证结构里，材料才会真正开始工作。"
+        "谁能想到竟然会在侦探小说里看到上世纪的英国人打麻将..."
       ]
     }
   ];

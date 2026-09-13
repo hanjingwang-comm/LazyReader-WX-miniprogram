@@ -10,14 +10,14 @@
 
 <table>
   <tr>
-    <th width="33%">Library<br>资料库</th>
-    <th width="33%">Reading Check-ins<br>阅读打卡</th>
-    <th width="33%">Book Stamps<br>书籍邮票</th>
+    <th width="33%">Book Bag<br>书袋</th>
+    <th width="33%">Ink Traces<br>墨迹</th>
+    <th width="33%">Ink Box<br>墨盒</th>
   </tr>
   <tr>
-    <td><a href="docs/images/library.jpg"><img src="docs/images/library.jpg" width="280" alt="Library: searchable articles and colored tags / 资料库：文章列表与彩色标签"></a></td>
-    <td><a href="docs/images/checkins.jpg"><img src="docs/images/checkins.jpg" width="280" alt="Reading check-ins: book clippings, calendar and reading statistics / 阅读打卡：书籍剪贴图、日历与阅读统计"></a></td>
-    <td><a href="docs/images/stamps.jpg"><img src="docs/images/stamps.jpg" width="280" alt="Book stamps with illustrations, titles and completion dates / 书籍邮票：插图、书名与完成日期"></a></td>
+    <td><a href="docs/images/library.jpg"><img src="docs/images/library.jpg" width="280" alt="Book Bag: reading notes and colored tags / 书袋：读书笔记与彩色标签"></a></td>
+    <td><a href="docs/images/checkins.jpg"><img src="docs/images/checkins.jpg" width="280" alt="Ink Traces: book clippings, calendar and reading statistics / 墨迹：书籍剪贴图、日历与阅读统计"></a></td>
+    <td><a href="docs/images/stamps.jpg"><img src="docs/images/stamps.jpg" width="280" alt="Ink Box: book stamps with illustrations, titles and completion dates / 墨盒：带插图、书名与完成日期的书籍邮票"></a></td>
   </tr>
   <tr>
     <td>Keep ideas within reach.<br>整理摘录，让思考有迹可循。</td>
@@ -51,7 +51,7 @@ Alongside that library, a visual reading calendar and collectible completion sta
 
 ### Scope and Current Status
 
-This repository contains a working native Mini Program prototype, not a published or independently security-audited production service. Its three main spaces are **Library**, **Reading Check-ins**, and **Book Stamps**.
+This repository contains a working native Mini Program prototype, not a published or independently security-audited production service. Its three main spaces are **Book Bag** (library), **Ink Traces** (reading check-ins), and **Ink Box** (book stamps).
 
 The local demo supports the library, editing, book profiles, reading records, and stamp workflows. Cloud sync and Tencent Cloud OCR have implementation code but require your own AppID, CloudBase environment, permissions, deployed functions, and OCR credentials before end-to-end use. Cross-platform capture means manually importing photos, screenshots, or PDFs; it does **not** mean automatic account synchronization, URL extraction, or scraping other reading apps. PDFs retain an original-file viewer; PDF OCR is not implemented.
 
@@ -69,7 +69,7 @@ LayReader 是一个轻量化的微信阅读小程序，面向希望把阅读真�
 
 ### 产品亮点
 
-- **从摘录走向私人知识库。** 阅读摘录与自己的写作进入同一个档案袋，通过两级目录、收藏、彩色标签和全文搜索整理；文章可以关联书籍，让零散内容有出处，也有再次使用的机会。
+- **从摘录走向私人知识库。** 阅读摘录与自己的写作进入同一个书袋，通过两级目录、收藏、彩色标签和全文搜索整理；文章可以关联书籍，让零散内容有出处，也有再次使用的机会。
 - **轻量化电子化纸质与跨平台内容。** 导入书页照片或阅读截图，云端 OCR 优先提取检测到的高亮、划线内容，未检测到时回退到识别全文。用户修正并确认草稿后才进入正式正文，识别原图不会混入文章。OCR 需要配置云服务，效果受图片质量影响。
 - **不论来源，都能继续编辑。** 自己输入的内容与 OCR 文字使用同一个原生富文本编辑器，支持标题、字号、加粗、斜体、列表、引用、插图及撤销／重做。格式即时呈现，本地自动保存帮助保留写作进度。
 - **用打卡趣味化阅读习惯。** 记录日期、书籍、页数、时长和阅读状态，为每本书选择剪贴图，并在日历上留下对应图案。记录支持修改和删除，也可以通过起止页码计算阅读量。
@@ -79,7 +79,7 @@ LayReader 是一个轻量化的微信阅读小程序，面向希望把阅读真�
 
 ### 功能边界与当前状态
 
-本仓库是可运行的原生微信小程序原型，不是已正式发布或经过独立安全审计的线上服务。三个核心空间为 **资料库、阅读打卡、书籍邮票**。
+本仓库是可运行的原生微信小程序原型，不是已正式发布或经过独立安全审计的线上服务。三个核心空间为 **书袋（资料与笔记）、墨迹（阅读打卡）、墨盒（书籍邮票）**。
 
 本地演示可体验资料整理、富文本编辑、书籍档案、阅读记录和邮票流程。云同步与腾讯云 OCR 已有代码实现，但仍需配置自己的 AppID、CloudBase 环境、访问权限、云函数和 OCR 密钥后联调。“跨平台内容记录”指用户手动导入照片、截图或 PDF，不包含账号自动同步、URL 抓取或爬取其他阅读应用。PDF 保留原文件查看入口，尚不支持 PDF OCR。
 

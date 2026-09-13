@@ -28,7 +28,7 @@
 .article-title-line { display: flex; gap: 12rpx; align-items: flex-start; padding-right: 76rpx; }
 .article-title { flex: 1; min-width: 0; overflow-wrap: anywhere; color: #1f2421; font-family: Georgia, "Songti SC", serif; font-size: 34rpx; font-weight: 700; line-height: 1.35; }
 .favorite-mark { flex: 0 0 auto; color: #315d96; font-size: 36rpx; }
-.article-excerpt { display: -webkit-box; margin-top: 10rpx; overflow: hidden; color: #66706a; font-size: 26rpx; line-height: 1.45; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+.article-excerpt { display: -webkit-box; margin-top: 10rpx; overflow: hidden; color: #66706a; font-size: 26rpx; line-height: 1.45; -webkit-box-orient: vertical; -webkit-line-clamp: 3; }
 .article-meta { display: flex; gap: 8rpx; align-items: center; min-height: 38rpx; margin-top: 16rpx; overflow: hidden; }
 .article-tag { flex: 0 1 auto; max-width: 150rpx; padding: 4rpx 10rpx; overflow: hidden; border-radius: 3rpx; font-size: 20rpx; text-overflow: ellipsis; white-space: nowrap; }
 .article-time { margin-left: auto; color: #929791; font-size: 21rpx; }

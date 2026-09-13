@@ -83,7 +83,7 @@
     <scroll-view scroll-y class="drawer-scroll" show-scrollbar="{{false}}">
       <view class="system-links">
         <view class="drawer-link {{filter === 'archive' ? 'is-selected' : ''}}" data-filter="archive" bindtap="selectSystemFilter">
-          <image src="/assets/icons/archive.svg" /><text>档案袋</text><text class="count-badge">{{archiveCount}}</text>
+          <image src="/assets/icons/archive.svg" /><text>书袋</text><text class="count-badge">{{archiveCount}}</text>
         </view>
         <view class="drawer-link {{filter === 'favorite' ? 'is-selected' : ''}}" data-filter="favorite" bindtap="selectSystemFilter">
           <image src="/assets/icons/star.svg" /><text>收藏</text><text class="count-badge">{{favoriteCount}}</text>

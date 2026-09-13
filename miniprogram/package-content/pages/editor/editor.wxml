@@ -1,6 +1,6 @@
 <view class="editor-page">
   <view class="editor-header" style="padding-top: {{contentTop}}px">
-    <button size="mini" class="back-button" bindtap="goBack" aria-label="返回资料库"><image src="/assets/icons/chevron-left.svg" mode="aspectFit" /></button>
+    <button size="mini" class="back-button" bindtap="goBack" aria-label="返回书袋"><image src="/assets/icons/chevron-left.svg" mode="aspectFit" /></button>
     <view class="header-center">
       <button size="mini" class="folder-link" bindtap="chooseFolder" aria-label="选择目录"><text>{{folderName}}</text><image src="/assets/icons/chevron-down.svg" mode="aspectFit" /></button>
       <text class="sync-label">{{syncLabel}}</text>
@@ -9,7 +9,7 @@
     <button size="mini" class="header-icon {{favorite ? 'is-active' : ''}}" bindtap="toggleFavorite">☆</button>
   </view>
 
-  <view wx:if="{{importedCount > 1}}" class="import-notice">已导入 {{importedCount}} 项，当前打开第一项，其余已进入资料库。</view>
+  <view wx:if="{{importedCount > 1}}" class="import-notice">已导入 {{importedCount}} 项，当前打开第一项，其余已进入书袋。</view>
 
   <view class="paper-editor">
     <view class="editor-toolbar" style="top: calc({{contentTop}}px + 65px)">
