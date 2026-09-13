@@ -1,9 +1,6 @@
-const COLORS = ["#315d96", "#356750", "#a77a18"];
+import { stampArtwork, stampTextWidth, stampTitleLines } from "../../domain/stamp-layout";
 
-function cropCell(iconId: number, imageSize: number) {
-  const cell = imageSize / 3;
-  return { sx: (iconId % 3) * cell, sy: Math.floor(iconId / 3) * cell, size: cell };
-}
+const COLORS = ["#315d96", "#356750", "#a77a18"];
 
 Component({
   properties: {
@@ -63,10 +60,9 @@ Component({
 
         const image = canvas.createImage();
         image.onload = () => {
-          const crop = cropCell(iconId, image.width);
-          const drawSize = size * .55;
+          const artwork = stampArtwork(iconId, image.width, image.height, size);
           ctx.globalAlpha = 1;
-          ctx.drawImage(image, crop.sx, crop.sy, crop.size, crop.size, center - drawSize / 2, center - drawSize / 2 + size * .02, drawSize, drawSize);
+          ctx.drawImage(image, artwork.sx, artwork.sy, artwork.sw, artwork.sh, artwork.dx, artwork.dy, artwork.dw, artwork.dh);
           this.drawText(ctx, size, center, color);
         };
         image.onerror = () => this.drawText(ctx, size, center, color);
@@ -76,16 +72,19 @@ Component({
 
     drawText(this: any, ctx: any, size: number, center: number, color: string) {
       const rawTitle = String(this.data.title || "已读完").trim();
-      const title = rawTitle.length > 14 ? `${rawTitle.slice(0, 13)}…` : rawTitle;
       const date = String(this.data.date || "").replace(/-/g, ".");
       ctx.fillStyle = color;
       ctx.globalAlpha = .96;
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
-      ctx.font = `700 ${Math.max(10, size * .062)}px Courier New, monospace`;
-      ctx.fillText(title, center, size * .15, size * .72);
-      ctx.font = `700 ${Math.max(9, size * .054)}px Courier New, monospace`;
-      ctx.fillText(date, center, size * .855, size * .62);
+      const titleSize = Math.max(10, size * .06);
+      ctx.font = `700 ${titleSize}px Courier New, monospace`;
+      const lines = stampTitleLines(rawTitle, size, titleSize, (text) => ctx.measureText(text).width);
+      for (const line of lines) ctx.fillText(line.text, center, line.y);
+      const dateSize = Math.max(9, size * .05);
+      const dateY = size * .82;
+      ctx.font = `700 ${dateSize}px Courier New, monospace`;
+      ctx.fillText(date, center, dateY, stampTextWidth(size, dateY, dateSize));
       ctx.globalAlpha = 1;
     }
   }
