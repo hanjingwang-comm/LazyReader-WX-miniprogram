@@ -1,4 +1,4 @@
-# LayReader (WX-miniprogram)
+# LazyReader (WX-miniprogram)
 
 **Build a private knowledge library from your reading. Make the habit worth returning to.**
 
@@ -33,7 +33,7 @@ Actual simulator screenshots with sample reading records, not personal reading h
 
 ### Product Positioning
 
-LayReader is a lightweight WeChat Mini Program for readers who want more than a collection of saved excerpts. It brings reading material, personal interpretation, book profiles, and reading history into one personal knowledge library.
+LazyReader is a lightweight WeChat Mini Program for readers who want more than a collection of saved excerpts. It brings reading material, personal interpretation, book profiles, and reading history into one personal knowledge library.
 
 Paper books and digital reading do not have to stay in separate worlds. Import a photo of a book page or a screenshot from another reading platform, extract its text with OCR, correct it, and turn it into an editable entry. Organize what matters with folders, colored tags, search, and book associations, then revisit and develop those ideas over time.
 
@@ -61,7 +61,7 @@ There are no subscriptions, video imports, AI Assistant, or DeepSeek dependency.
 
 ### 产品定位
 
-LayReader 是一个轻量化的微信阅读小程序，面向希望把阅读真正转化为个人积累的读者。它不只保存摘录，而是把阅读材料、自己的理解、书籍档案与阅读历程连接起来，逐步建立可检索、可编辑、可持续补充的私人知识库。
+LazyReader 是一个轻量化的微信阅读小程序，面向希望把阅读真正转化为个人积累的读者。它不只保存摘录，而是把阅读材料、自己的理解、书籍档案与阅读历程连接起来，逐步建立可检索、可编辑、可持续补充的私人知识库。
 
 纸质阅读与电子阅读不必各自分散。拍下书页，或导入其他阅读平台的内容截图，通过 OCR 提取文字，修正后整理成可编辑的文章。再借助目录、彩色标签、搜索和书籍关联，将零散片段变成日后可以重新找到、继续思考和创作的材料。
 
@@ -142,5 +142,3 @@ Cloud services may incur charges. OCR uploads the source image for cloud process
 - Local environment files, private DevTools configuration, keys, logs, and exports are ignored. Tracked configuration files must still be reviewed before every push. / 已忽略本地环境文件、开发工具私有配置、密钥、日志及导出文件；已跟踪的配置文件仍需在每次推送前检查。
 - `npm run check` runs domain/workflow tests and TypeScript checks. Cloud integration, iOS/Android behavior, package size, and production security require separate verification. / 此命令执行领域及交互流程测试和类型检查；云端联调、iOS/Android 真机、包体与生产安全需另行验证。
 - Lucide icons retain their [upstream license](miniprogram/assets/icons/LICENSE). / Lucide 图标保留上游许可证。
-
-Some internal identifiers retain the original `LazyReader` name for cache compatibility. / 部分内部标识保留原 `LazyReader` 名称，以兼容已有缓存。
